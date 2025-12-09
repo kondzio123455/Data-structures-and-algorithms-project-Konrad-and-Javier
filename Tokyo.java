@@ -7,6 +7,11 @@ public class Tokyo{
 		static Scanner sc = new Scanner(System.in);
     
     private int[][] dist = new int[7][7];
+
+		public Tokyo(){
+			initMap();
+		}
+
     public void initMap() {
         dist[0][1] = 4; dist[1][0] = 4;
         dist[1][2] = 3; dist[2][1] = 3;
@@ -19,13 +24,13 @@ public class Tokyo{
     }
 
 		public void start(){
-			initMap();
 			menu();
 		}
 
 		private void menu(){
 			int choice = 0;
 			do{
+					System.out.println("----------------------------------------");
 					System.out.println("1. Search");
 					System.out.println("2. Insert");
 					System.out.println("3. All Conections");
@@ -33,6 +38,7 @@ public class Tokyo{
 					System.out.println("0. Exit");
 					System.out.print("Enter a choice: ");
 				 	choice = sc.nextInt();
+					System.out.println("----------------------------------------");
 				switch(choice){
 					case 1 -> doSearch();
 					case 2 -> doInsert();
@@ -45,7 +51,8 @@ public class Tokyo{
 		//-------------------------------------------------------------------------------------------------//
 
 		private void doSearch(){
-			System.out.println("Enter search index: ");
+			sc.nextLine();
+			System.out.print("Enter search index: ");
 			String searchIndex = sc.nextLine();
 			search(searchIndex);
 		}
@@ -62,6 +69,7 @@ public class Tokyo{
     }
 		//-------------------------------------------------------------------------------------------------//
     private void doInsert(){
+			sc.nextLine();
 			System.out.print("Enter x: ");
 			int i = sc.nextInt();
 			System.out.print("Enter y: ");
@@ -80,6 +88,7 @@ public class Tokyo{
 		//-------------------------------------------------------------------------------------------------//
     
 		private void doAllCons(){
+				sc.nextLine();
 				System.out.print("Enter x: ");
 				int x = sc.nextInt();
 				allCons(x);
@@ -96,12 +105,13 @@ public class Tokyo{
     }
 		//-------------------------------------------------------------------------------------------------//
 		private void doClosest(){
+			sc.nextLine();
 			System.out.print("Enter x: ");
 			int x = sc.nextInt();
 			closest(x);
 		}
     private int closest(int i) {
-        if (i >= 0 && i < 7) {
+       if (i >= 0 && i < 7) {
             int minDistance = 999;
             int closestIndex = -1;
             for (int j = 0; j < 7; j++) {
